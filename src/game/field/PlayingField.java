@@ -8,6 +8,7 @@ import game.player.ConsolePlayer;
 import game.player.Player;
 
 import static game.field.Symbol.EMPTY;
+import static game.field.Symbol.X;
 
 public class PlayingField {
 
@@ -52,7 +53,7 @@ public class PlayingField {
     }
 
     public boolean checkWinner(Symbol symbol) {
-        return checkDiagonal(symbol) || checkLines(symbol);
+        return checkDiagonal(symbol) || checkLines(symbol) ;
     }
 
     private boolean checkDiagonal(Symbol symbol) {
