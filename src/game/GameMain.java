@@ -15,6 +15,7 @@ public class GameMain {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
+        System.out.println("Введите размер поля: ");
         int matrixSize = getMatrixSize();
 
         PlayingField playingField = new PlayingField(matrixSize);

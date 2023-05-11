@@ -3,6 +3,8 @@ package game.field;
 
 import game.exception.MatrixOutOfBoundsException;
 import game.exception.OccupiedTileException;
+import game.master.GameMaster;
+import game.player.ConsolePlayer;
 import game.player.Player;
 
 import static game.field.Symbol.EMPTY;
@@ -30,12 +32,10 @@ public class PlayingField {
         }
 
         Symbol symbol = player.getSymbol();
-
         if (matrix[coordinate.getY()][coordinate.getX()] != EMPTY) {
-            throw new OccupiedTileException("Эта клетка уже занята. Выбери другую");
+                throw new OccupiedTileException("Эта клетка уже занята. Выбери другую");
         }
-        matrix[coordinate.getY()][coordinate.getX()] = symbol;
-
+            matrix[coordinate.getY()][coordinate.getX()] = symbol;
     }
 
     @Override
@@ -73,11 +73,10 @@ public class PlayingField {
             cols = true;
             rows = true;
             for (int row = 0; row < matrix.length; row++) {
-                cols = cols & (matrix[col][row] == symbol);
-                rows = rows & (matrix[row][col] == symbol);
+                cols &= (matrix[col][row] == symbol);
+                rows &= (matrix[row][col] == symbol);
             }
             if (cols || rows) return true;
-
         }
         return false;
     }

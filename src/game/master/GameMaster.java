@@ -39,14 +39,13 @@ public abstract class GameMaster {
         }
     }
     private void takeTurn() {
-        if (activePlayer instanceof ConsolePlayer) {
+        boolean isConsolePlayer = activePlayer instanceof ConsolePlayer;
+        if (isConsolePlayer) {
             System.out.print(activePlayer + " сделай свой ход: ");
         }
-        GameHelper.retryOnException(() -> {
+        GameHelper.retryOnException(()-> {
             Coordinate player1Move = activePlayer.makeMove();
             playingField.setValue(player1Move, activePlayer);
-        });
+        }, isConsolePlayer);
     }
-
-
 }

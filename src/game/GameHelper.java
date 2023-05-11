@@ -9,13 +9,15 @@ public final class GameHelper {
         return players[random];
     }
 
-    public static void retryOnException(Runnable runnable) {
+    public static void retryOnException(Runnable runnable, boolean printError) {
         while (true) {
             try {
                 runnable.run();
                 break;
             } catch (RetryableGameException e) {
-                System.out.println(e.getMessage());
+                if (printError) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }
